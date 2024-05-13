@@ -1,6 +1,6 @@
 # ProgettoTesi
 
-Lambda functions contiene le lambda functions create in AWS. 
+Lambda functions contiene le lambda functions create in AWS. /n
   LF_read_queue riceve in entrata messaggio da coda1 e manda messaggio a coda2
   LF_print riceve messaggio da coda2 e salva file txt nel bucket prescelto. Dovrebbe inviare in coda3 il link scaricato e il nome del file txt appena creato a LF_extract
   LF_extract contiene il codice per estrarre i metadata dal sito. Non ho ancora separato il download e l'estrazione perché volevo testare il codice in maniera isolata dal resto.
