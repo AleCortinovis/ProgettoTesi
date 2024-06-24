@@ -1,6 +1,8 @@
-# ProgettoTesi
+# ProgettoTesi - soluzione scalabile e in cloud per web scraping
 
-Lambda functions contiene le lambda functions create in AWS.
+Il progetto consiste nel creare una semplice applicazione che ricebuto in ingresso uno o più siti, li analizzi e restituisca il codice html e estrai i dati contenuti al loro interno, ovviamente se fosse possibile estrarre i dati.
+
+la cartella Lambda functions contiene le lambda functions create in AWS e in Visual Studio Code.
 - lambda_read_queue ha lo scopo di leggere i messaggi ricevuti in coda e di inviarli uno alla volta alla funzione successiva tramite una seconda coda, facendo da buffer per l’invio dell’elenco dei siti da analizzare.
 - lambda_print una volta ricevuto il messaggio inizia ad analizzare il sito effettuando una richiesta GET per ottenere lo script HTML della pagina. Successivamente salva lo script all’interno di un file di testo nel bucket S3 apposito, ma non prima di aver controllato l’esistenza del file: infatti se si salvasse un file con lo stesso nome di un altro file presente nel bucket, l’ultimo sovrascriverebbe il documento precedente. Infine, la funzione, tramite una terza e ultima coda SQS, invia un messaggio contenente il link del sito appena analizzato e il nome del file appena salvato alla terza funzione.
 - lambda_extract ha il compito di estrarre i contenuti della pagina ricevuta in ingresso. I dati estratti sono a loro volta salvati in un nuovo file nello spazio di storage apposito.
