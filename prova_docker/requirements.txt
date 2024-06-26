@@ -1,5 +1,0 @@
-# XPath filtering, lxml is required by bs4 anyway, but put it here to be safe.
-beautifulsoup4
-lxml==5.1.0
-extruct
-boto3

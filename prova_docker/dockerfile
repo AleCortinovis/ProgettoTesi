@@ -1,6 +1,0 @@
-FROM public.ecr.aws/lambda/python:3.12
-#copy requirements
-COPY requirements.txt ${LAMBDA_TASK_ROOT}
-ADD lambda_functions ${LAMBDA_TASK_ROOT}/lambda_functions
-#install the specified packages
-RUN pip install -r requirements.txt
