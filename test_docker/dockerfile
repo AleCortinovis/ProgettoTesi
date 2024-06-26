@@ -1,4 +1,0 @@
-FROM public.ecr.aws/lambda/python:3.11
-RUN pip install extruct
-COPY my_lambda_function.py ./
-CMD ["my_lambda_function.lambda_handler"]
