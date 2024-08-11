@@ -21,18 +21,24 @@ def extract_metadata(url, nome_file):
     obj = s3_client.get_object(Bucket=nome_bucket, Key=nome_file)
     data = obj['Body'].read().decode('utf-8')
 
-    #opzione alternativa con più parametri
+    
     #r = requests.get(url)
     #base_url = get_base_url(r.text, r.url)
     """metadata = extruct.extract(data, 
-                               base_url=url,
-                               uniform=True,
-                               syntaxes=['json-ld',
-                                         'microdata',
-                                         'opengraph'])
+                                   base_url=url,
+                                   uniform=True,
+                                   syntaxes=['json-ld',
+                                             'microdata',
+                                             'opengraph'])
     """
-    metadata = extruct.extract(data, 
-                               base_url=url)
+    #opzione alternativa con più parametri
+    
+    parsed_url = urlparse(url)
+    base_url = parsed_url.netloc
+    
+    metadata = extruct.extract( data, 
+                                base_url=base_url,
+                                uniform=True)
                                
     return metadata
 
